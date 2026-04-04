@@ -901,4 +901,12 @@
   .container {
     padding: 0 16px;
   }
+  .footer-grid {
+    flex-direction: column;
+    gap: 48px;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
