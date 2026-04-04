@@ -75,15 +75,12 @@ export default function Hero() {
 
           <div className="hero-actions">
             <button 
-              className={`btn-primary ${phase === 'reading' ? 'attention-shake' : ''}`}
+              className="btn-primary"
               onClick={handleAction}
               disabled={phase === 'scanning'}
             >
               {phase === 'reading' ? 'Analyze Transcript' : phase === 'scanning' ? 'Analyzing...' : currentScenario.nextButton} 
               {phase === 'reading' ? <Play size={16} fill="currentColor" /> : phase === 'scanning' ? <Sparkles size={16} className="animate-spin" /> : <ArrowRight size={16} />}
-            </button>
-            <button className="btn-secondary">
-              See Pricing
             </button>
           </div>
         </div>

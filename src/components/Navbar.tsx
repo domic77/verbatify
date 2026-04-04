@@ -16,10 +16,9 @@ export default function Navbar() {
         </div>
 
         <div className="nav-auth">
-          <Link to="/login" className="sign-in">Sign In</Link>
-          <button className="btn-primary">
-            Sign Up
-          </button>
+          <Link to="/login" className="btn-primary" style={{ textDecoration: 'none' }}>
+            Get Started
+          </Link>
         </div>
       </div>
     </nav>

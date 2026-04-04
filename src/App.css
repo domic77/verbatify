@@ -600,7 +600,7 @@
   font-family: var(--font-script);
   font-style: italic;
   font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
   line-height: 1;
 }
 .step-glass-icon {
@@ -817,16 +817,22 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 32px 0 64px 0;
+  }
+  .problem-section, .how-it-works, .pricing-section {
+    padding: 64px 0;
+  }
   .bento-grid, .pricing-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 32px;
   }
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
   .steps-container {
     flex-direction: column;
-    gap: 48px;
+    gap: 32px;
   }
   .step-connector {
     display: none; /* Hide arrows on mobile stack */
@@ -835,6 +841,10 @@
     display: none;
   }
   .section-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .container {
+    padding: 0 16px;
   }
 }
