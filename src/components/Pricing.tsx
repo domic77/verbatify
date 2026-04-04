@@ -5,7 +5,7 @@ export default function Pricing() {
     <section id="pricing" className="pricing-section">
       <div className="container">
         <div className="text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '48px' }}>
-           <div className="hero-label" style={{ marginBottom: '16px' }}>
+           <div className="pricing-label" style={{ marginBottom: '16px' }}>
              99% CHEAPER THAN ENTERPRISE TOOLS
            </div>
            <h2 className="section-title" style={{ marginBottom: 0 }}>

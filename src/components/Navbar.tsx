@@ -16,8 +16,8 @@ export default function Navbar() {
         </div>
 
         <div className="nav-auth">
-          <Link to="/login" className="btn-primary" style={{ textDecoration: 'none' }}>
-            Get Started
+          <Link to="/login" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease' }} className="hover-accent">
+            Sign In
           </Link>
         </div>
       </div>

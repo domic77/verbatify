@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Play, CheckCircle2, AlertCircle, TrendingUp, Sparkles, MessageSquare, ArrowRight, Layers, ArrowUpRight } from 'lucide-react';
 
 const SCENARIOS = [
@@ -74,14 +75,9 @@ export default function Hero() {
           </p>
 
           <div className="hero-actions">
-            <button 
-              className="btn-primary"
-              onClick={handleAction}
-              disabled={phase === 'scanning'}
-            >
-              {phase === 'reading' ? 'Analyze Transcript' : phase === 'scanning' ? 'Analyzing...' : currentScenario.nextButton} 
-              {phase === 'reading' ? <Play size={16} fill="currentColor" /> : phase === 'scanning' ? <Sparkles size={16} className="animate-spin" /> : <ArrowRight size={16} />}
-            </button>
+            <Link to="/login" className="btn-primary" style={{ textDecoration: 'none', padding: '16px 32px', fontSize: '1.125rem' }}>
+              Get Started
+            </Link>
           </div>
         </div>
 
@@ -170,6 +166,18 @@ export default function Hero() {
 
             <div className="sample-caption" style={{ paddingBottom: '24px', marginTop: 0 }}>
               {phase === 'reading' ? "SAMPLE DATA" : phase === 'analyzed' ? "AUTOMATED DEMO OUTPUT" : "WAITING FOR ANALYSIS..."}
+            </div>
+            
+            <div style={{ padding: '0 24px 24px 24px', display: 'flex', justifyContent: 'center' }}>
+              <button 
+                className={`btn-secondary ${phase === 'reading' ? 'pulse-btn' : ''}`}
+                style={{ width: '100%', justifyContent: 'center', background: 'rgba(59, 130, 246, 0.1)', borderColor: 'var(--accent-blue)', color: 'var(--text-primary)' }}
+                onClick={handleAction}
+                disabled={phase === 'scanning'}
+              >
+                {phase === 'reading' ? 'Analyze Transcript' : phase === 'scanning' ? 'Analyzing...' : currentScenario.nextButton} 
+                {phase === 'reading' ? <Play size={16} fill="currentColor" /> : phase === 'scanning' ? <Sparkles size={16} className="animate-spin" style={{color: 'currentColor'}} /> : <ArrowRight size={16} color="currentColor" />}
+              </button>
             </div>
             
             {phase === 'scanning' && <div className="scanner-line"></div>}
