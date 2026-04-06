@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 
 export default function Navbar() {
   return (
@@ -16,9 +17,17 @@ export default function Navbar() {
         </div>
 
         <div className="nav-auth">
-          <Link to="/login" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease' }} className="hover-accent">
-            Sign In
-          </Link>
+          <SignedOut>
+            <Link to="/login" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease' }} className="hover-accent">
+              Sign In
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <Link to="/dashboard" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease', marginRight: '16px' }} className="hover-accent">
+              Dashboard
+            </Link>
+            <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: { borderRadius: '0px' } } }} />
+          </SignedIn>
         </div>
       </div>
     </nav>

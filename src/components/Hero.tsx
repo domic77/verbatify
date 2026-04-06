@@ -75,7 +75,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-actions">
-            <Link to="/login" className="btn-primary" style={{ textDecoration: 'none', padding: '16px 32px', fontSize: '1.125rem' }}>
+            <Link to="/signup" className="btn-primary" style={{ textDecoration: 'none', padding: '16px 32px', fontSize: '1.125rem' }}>
               Get Started
             </Link>
           </div>
