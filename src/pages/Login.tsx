@@ -124,6 +124,8 @@ export default function Login() {
                 />
               </div>
 
+              <div id="clerk-captcha"></div>
+
               <button 
                 type="submit" 
                 className="btn-primary" 

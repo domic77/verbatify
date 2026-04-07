@@ -178,10 +178,11 @@ export default function Signup() {
                   />
                 </div>
 
+                <div id="clerk-captcha"></div>
+
                 <button 
                   type="submit" 
-                  className="btn-primary" 
-                  style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
+                  className="btn-primary"                   style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
                   disabled={isLoading || !emailAddress || !password || !firstName || !lastName}
                 >
                   {isLoading ? 'Creating Account...' : 'Create account'}
@@ -204,10 +205,11 @@ export default function Signup() {
                   />
                 </div>
 
+                <div id="clerk-captcha"></div>
+
                 <button 
                   type="submit" 
-                  className="btn-primary" 
-                  style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
+                  className="btn-primary"                   style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
                   disabled={isLoading || !code}
                 >
                   {isLoading ? 'Verifying...' : 'Verify Email'}

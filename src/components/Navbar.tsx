@@ -16,7 +16,7 @@ export default function Navbar() {
           <a href="/#pricing">Pricing</a>
         </div>
 
-        <div className="nav-auth">
+        <div className="nav-auth" style={{ minWidth: '60px', minHeight: '32px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
           <SignedOut>
             <Link to="/login" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease' }} className="hover-accent">
               Sign In
