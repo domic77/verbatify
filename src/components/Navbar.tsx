@@ -23,7 +23,7 @@ export default function Navbar() {
             </Link>
           </SignedOut>
           <SignedIn>
-            <Link to="/dashboard" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease', marginRight: '16px' }} className="hover-accent">
+            <Link to="/analyze" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease', marginRight: '16px' }} className="hover-accent">
               Dashboard
             </Link>
             <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: { borderRadius: '0px' } } }} />

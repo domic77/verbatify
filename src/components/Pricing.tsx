@@ -15,6 +15,7 @@ export default function Pricing() {
         </div>
         
         <div className="pricing-grid">
+          {/* Plan 1: Single Call */}
           <div className="price-card">
             <h3 className="price-name">Single Call Analysis</h3>
             <div className="price-amount">
@@ -31,22 +32,40 @@ export default function Pricing() {
             <button className="btn-secondary" style={{ width: '100%', justifyContent: 'center' }}>Analyze My Call</button>
           </div>
 
+          {/* Plan 2: Multi-Call (One-time) */}
           <div className="price-card featured">
             <h3 className="price-name">Multi-Call Intelligence</h3>
             <div className="price-amount">
-              <span className="price-currency">$</span>49<span className="price-period">/mo</span>
+              <span className="price-currency">$</span>49
             </div>
             <p className="price-desc" style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '24px' }}>
-              Upload months of transcripts and get one master script built to fix recurring patterns.
+              Upload a batch of transcripts and get one master script built to fix recurring patterns.
             </p>
             <div className="price-features" style={{ marginBottom: '40px', flexGrow: 1 }}>
-              <div className="feature"><Check size={16} className="feature-icon" /> Unlimited Call Analyses</div>
-              <div className="feature"><Check size={16} className="feature-icon" /> Pattern Recognition Across Calls</div>
-              <div className="feature"><Check size={16} className="feature-icon" /> One Master Correction Script</div>
+              <div className="feature"><Check size={16} className="feature-icon" /> Deep Pattern Recognition</div>
+              <div className="feature"><Check size={16} className="feature-icon" /> Master Correction Script</div>
+              <div className="feature"><Check size={16} className="feature-icon" /> Root-Cause Behavior Fixes</div>
             </div>
             <button className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              Start Winning <ArrowRight size={16} />
+              Analyze My Batch <ArrowRight size={16} />
             </button>
+          </div>
+
+          {/* Plan 3: Unlimited */}
+          <div className="price-card">
+            <h3 className="price-name">Unlimited Intelligence</h3>
+            <div className="price-amount">
+              <span className="price-currency">$</span>99<span className="price-period">/mo</span>
+            </div>
+            <p className="price-desc" style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '24px' }}>
+              For teams that want every single call analyzed, tracked, and optimized daily.
+            </p>
+            <div className="price-features" style={{ marginBottom: '40px', flexGrow: 1 }}>
+              <div className="feature"><Check size={16} className="feature-icon" /> Unlimited Transcript Uploads</div>
+              <div className="feature"><Check size={16} className="feature-icon" /> Ongoing Sales Coaching</div>
+              <div className="feature"><Check size={16} className="feature-icon" /> Weekly Strategy Adjustments</div>
+            </div>
+            <button className="btn-secondary" style={{ width: '100%', justifyContent: 'center' }}>Go Unlimited</button>
           </div>
         </div>
       </div>

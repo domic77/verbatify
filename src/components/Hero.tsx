@@ -113,18 +113,6 @@ export default function Hero() {
                 </div>
               ) : (
                 <div className="rc-content fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div className="rc-section wins" style={{ marginBottom: 0 }}>
-                    <div className="rc-title green"><CheckCircle2 size={16} /> WINS</div>
-                    {phase === 'analyzed' ? (
-                      <p className="rc-text fade-in">{currentScenario.wins}</p>
-                    ) : (
-                      <div className={`skeleton-wrapper ${phase === 'scanning' ? 'pulse' : ''}`}>
-                        <div className="rc-line w-full"></div>
-                        <div className="rc-line w-3-4"></div>
-                      </div>
-                    )}
-                  </div>
-
                   <div className="rc-section flaws" style={{ marginBottom: 0 }}>
                     <div className="rc-title red"><AlertCircle size={16} /> CRITICAL FLAWS</div>
                     {phase === 'analyzed' ? (
@@ -157,6 +145,18 @@ export default function Hero() {
                       <div className={`skeleton-wrapper ${phase === 'scanning' ? 'pulse' : ''}`}>
                         <div className="rc-line w-full"></div>
                         <div className="rc-line w-1-2"></div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="rc-section wins" style={{ marginBottom: 0 }}>
+                    <div className="rc-title green"><CheckCircle2 size={16} /> WINS</div>
+                    {phase === 'analyzed' ? (
+                      <p className="rc-text fade-in">{currentScenario.wins}</p>
+                    ) : (
+                      <div className={`skeleton-wrapper ${phase === 'scanning' ? 'pulse' : ''}`}>
+                        <div className="rc-line w-full"></div>
+                        <div className="rc-line w-3-4"></div>
                       </div>
                     )}
                   </div>

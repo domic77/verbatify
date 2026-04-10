@@ -50,7 +50,7 @@ export default function Signup() {
       
       if (completeSignUp.status === 'complete') {
         await setActive({ session: completeSignUp.createdSessionId });
-        navigate('/dashboard');
+        navigate('/analyze');
       } else {
         setError('Verification failed. Please try again.');
       }

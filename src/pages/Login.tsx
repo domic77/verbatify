@@ -25,7 +25,7 @@ export default function Login() {
 
       if (result.status === 'complete') {
         await setActive({ session: result.createdSessionId });
-        navigate('/dashboard');
+        navigate('/analyze');
       } else {
         console.log(result);
         setError('Something went wrong. Please try again.');

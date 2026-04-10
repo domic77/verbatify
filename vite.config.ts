@@ -6,4 +6,12 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), cloudflare()],
+  build: {
+    rollupOptions: {
+      onwarn(warning, defaultHandler) {
+        if (warning.code === 'EVAL') return;
+        defaultHandler(warning);
+      },
+    },
+  },
 })
