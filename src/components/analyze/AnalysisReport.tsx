@@ -1,6 +1,6 @@
 import { AlertTriangle, AlertCircle, CheckCircle2, PenTool, Copy, Check, ArrowUpRight, FileText } from 'lucide-react';
 import type { AnalysisResult } from '../../services/ai';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface AnalysisReportProps {
   onReset: () => void;
