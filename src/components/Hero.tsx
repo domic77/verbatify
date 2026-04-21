@@ -1,37 +1,37 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, CheckCircle2, AlertCircle, TrendingUp, Sparkles, MessageSquare, ArrowRight, Layers, ArrowUpRight } from 'lucide-react';
+import { Play, CheckCircle2, AlertCircle, TrendingUp, Sparkles, ArrowRight, Layers, ArrowUpRight } from 'lucide-react';
 
 const SCENARIOS = [
   {
     id: 1,
-    headerIcon: MessageSquare,
-    headerTitle: "SINGLE CALL TRANSCRIPT",
+    headerIcon: Layers,
+    headerTitle: "MULTI-CALL HUMAN BATCH",
     transcript: [
-      { speaker: "Rep", text: "So the core platform is $1,200/mo." },
-      { speaker: "Prospect", text: "That fits our budget. We're just worried about the time it'll take our team to migrate all our historical data." },
-      { speaker: "Rep", text: "Don't worry, the interface is super intuitive. I'll send over the contract!" }
+      { speaker: "Call 1 (Mon)", text: "Prospect: Looks great, but our compliance team needs custom reporting." },
+      { speaker: "Call 2 (Wed)", text: "Prospect: We love it, but onboarding our EU offices sounds like a headache." },
+      { speaker: "Call 3 (Fri)", text: "Prospect: Standard limits are fine, but what if we have a traffic spike?" }
     ],
-    wins: "Secured agreement on core pricing.",
-    flaws: "Dismissed a critical buying concern with a generic feature claim.",
-    opportunities: "Should have asked: 'How many months of historical data are we talking about?'",
-    upsell: "Missed the $3,000 'White-Glove Migration Service' add-on. They literally asked for help.",
-    nextButton: "View Multi-Call Demo"
+    wins: "Consistently generating strong initial product interest across 15 calls.",
+    flaws: "Reps are treating enterprise-level requirements as standard feature requests.",
+    opportunities: "Master Script Generated: 'Is this a hard requirement for procurement to sign off?'",
+    upsell: "Left $50k+ on the table. 30% of these calls qualified for the 'Enterprise Tier'.",
+    nextButton: "View AI Batch Demo"
   },
   {
     id: 2,
     headerIcon: Layers,
-    headerTitle: "MULTI-CALL BATCH UPLOAD",
+    headerTitle: "AI AGENT BATCH DEBUGGING",
     transcript: [
-      { speaker: "Call 1 (Mon)", text: "Prospect: The software looks great, but our compliance team needs custom reporting." },
-      { speaker: "Call 2 (Wed)", text: "Prospect: We love the tool, but getting our European offices onboarded sounds like a headache." },
-      { speaker: "Call 3 (Fri)", text: "Prospect: The standard limits are fine, but what happens if we have a massive traffic spike?" }
+      { speaker: "Call 14", text: "Prospect: How much does this cost before we keep talking?" },
+      { speaker: "Call 42", text: "Prospect: Wait, before you go on, what is the pricing model?" },
+      { speaker: "Call 89", text: "Prospect: Can you just tell me the price?" }
     ],
-    wins: "Consistently generating strong initial product interest.",
-    flaws: "Reps are treating enterprise-level requirements as standard feature requests.",
-    opportunities: "Should have asked: 'Is this a hard requirement for your procurement team to sign off?'",
-    upsell: "Left $50k+ on the table. 30% of these calls qualify for the 'Enterprise Tier' upgrade, but reps only pitched the Pro plan.",
-    nextButton: "View Single Call Demo"
+    wins: "Agent is successfully navigating past the gatekeeper 85% of the time.",
+    flaws: "Pattern Detected: Agent got stuck in a logic loop and ignored the direct pricing objection in 42 calls.",
+    opportunities: "Prompt injection required to pause script progression when interrupted by pricing.",
+    upsell: "Optimized Prompt: 'If prospect interrupts to ask about price, immediately acknowledge it and state: Our plans start at $49/mo...'",
+    nextButton: "View Human Batch Demo"
   }
 ];
 
@@ -60,20 +60,19 @@ export default function Hero() {
         {/* Left Text Section */}
         <div className="hero-content">
           <div className="hero-label">
-            AI-POWERED — CALL TEARDOWN & ANALYSIS
+            AI-POWERED — REP COACHING & AGENT OPTIMIZATION
           </div>
-          
-          <h1 className="hero-title text-gradient">
-            Stop Guessing Why You're <br />
-            <span className="italic-highlight">
-              Losing
-            </span> Good Deals.
-          </h1>
-          
-          <p className="hero-desc" style={{ marginBottom: '40px' }}>
-            See how Verbatify instantly identifies missed opportunities and gives you word-for-word scripts to perfect your pitch across all your sales calls.
-          </p>
 
+          <h1 className="hero-title text-gradient">
+            Stop Losing Deals to <br />
+            <span className="italic-highlight">
+              Bad Habits
+            </span> & Hallucinations.
+          </h1>
+
+          <p className="hero-desc" style={{ marginBottom: '40px' }}>
+            Upload your failed cold calls. Verbatify instantly detects missed buying signals for your human reps, and isolates logic loops to optimize your AI Voice Agents.
+          </p>
           <div className="hero-actions">
             <Link to="/signup" className="btn-primary" style={{ textDecoration: 'none', padding: '16px 32px', fontSize: '1.125rem' }}>
               Get Started

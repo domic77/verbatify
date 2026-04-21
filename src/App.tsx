@@ -10,6 +10,7 @@ import Terms from './pages/Terms';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Analyze from './pages/Analyze';
+import Dashboard from './pages/Dashboard';
 
 function MainLayout() {
   return (
@@ -34,7 +35,7 @@ function App() {
               element={
                 <>
                   <SignedIn>
-                    <Navigate to="/analyze" replace />
+                    <Navigate to="/dashboard" replace />
                   </SignedIn>
                   <SignedOut>
                     <Landing />
@@ -45,6 +46,19 @@ function App() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
           </Route>
+          <Route 
+            path="/dashboard" 
+            element={
+              <>
+                <SignedIn>
+                  <Dashboard />
+                </SignedIn>
+                <SignedOut>
+                  <RedirectToSignIn />
+                </SignedOut>
+              </>
+            } 
+          />
           <Route 
             path="/analyze" 
             element={
@@ -63,7 +77,7 @@ function App() {
             element={
               <>
                 <SignedIn>
-                  <Navigate to="/analyze" replace />
+                  <Navigate to="/dashboard" replace />
                 </SignedIn>
                 <SignedOut>
                   <Login />
@@ -76,7 +90,7 @@ function App() {
             element={
               <>
                 <SignedIn>
-                  <Navigate to="/analyze" replace />
+                  <Navigate to="/dashboard" replace />
                 </SignedIn>
                 <SignedOut>
                   <Signup />

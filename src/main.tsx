@@ -20,7 +20,13 @@ if (!PUBLISHABLE_KEY) {
 } else {
   root.render(
     <StrictMode>
-      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <ClerkProvider 
+        publishableKey={PUBLISHABLE_KEY}
+        signInUrl="/login"
+        signUpUrl="/signup"
+        signInFallbackRedirectUrl="/dashboard"
+        signUpFallbackRedirectUrl="/dashboard"
+      >
         <App />
       </ClerkProvider>
     </StrictMode>,

@@ -1,4 +1,4 @@
-import { EyeOff, HandCoins, Repeat, AlertTriangle } from 'lucide-react';
+import { HandCoins, Repeat, AlertTriangle, Bot } from 'lucide-react';
 
 export default function ProblemSection() {
   return (
@@ -8,16 +8,16 @@ export default function ProblemSection() {
           Your calls are telling you something. <br/>
           <span className="italic-highlight" style={{ color: "var(--accent-blue)" }}>Are you listening?</span>
         </h2>
-        
+
         <div className="bento-grid">
           {/* Main Large Card */}
           <div className="bento-card bento-large group">
             <div className="bento-icon-wrapper">
-              <EyeOff size={32} color="var(--accent-blue)" />
+              <Bot size={32} color="var(--accent-blue)" />
             </div>
-            <h3 className="bento-title">Blind Spots</h3>
+            <h3 className="bento-title">AI Agents Hallucinate</h3>
             <p className="bento-text">
-              You don't know which objections are killing your deals call after call.
+              Automated cold callers are incredible, until a prospect asks an edge-case question. The LLM gets stuck in a logic loop, hangs up, or gives away pricing too early.
             </p>
             <div className="bento-visual stepping-stones">
                <div className="stone success"></div>
@@ -38,9 +38,9 @@ export default function ProblemSection() {
               <div className="bento-icon-wrapper green">
                 <HandCoins size={24} color="var(--accent-green)" />
               </div>
-              <h3 className="bento-title">Missed Revenue</h3>
+              <h3 className="bento-title">Missed Signals</h3>
               <p className="bento-text">
-                You're leaving money on the table and have no idea how much.
+                Human reps are completely ignoring the subtle cues prospects drop indicating they are ready to buy.
               </p>
               <div className="bento-glow"></div>
             </div>
@@ -52,7 +52,7 @@ export default function ProblemSection() {
               </div>
               <h3 className="bento-title">No Feedback Loop</h3>
               <p className="bento-text">
-                You have no system to turn losing calls into a winning script.
+                You have no system to turn losing calls into an optimized AI prompt or a winning human script.
               </p>
               <div className="bento-glow"></div>
             </div>

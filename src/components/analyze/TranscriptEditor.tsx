@@ -1,16 +1,17 @@
-import { Sparkles, UploadCloud } from 'lucide-react';
+import { Sparkles, UploadCloud, User, Bot } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 interface TranscriptEditorProps {
   transcript: string;
   setTranscript: (val: string) => void;
   appState: 'input' | 'paywall' | 'analyzing' | 'results';
-  onAnalyze: () => void;
+  onAnalyze: (mode: 'human' | 'ai') => void;
 }
 
 export default function TranscriptEditor({ transcript, setTranscript, appState, onAnalyze }: TranscriptEditorProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessingPdf, setIsProcessingPdf] = useState(false);
+  const [mode, setMode] = useState<'human' | 'ai'>('human');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const wordCount = transcript.trim().split(/\s+/).filter(w => w.length > 0).length;
@@ -80,7 +81,34 @@ export default function TranscriptEditor({ transcript, setTranscript, appState, 
   }
 
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', flex: 1, position: 'relative' }}>
+      
+      {/* Mode Toggle */}
+      <div style={{ padding: '0 24px', marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'inline-flex', background: 'rgba(0,0,0,0.3)', padding: '4px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+          <button 
+            onClick={() => setMode('human')}
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', borderRadius: '4px', fontSize: '0.875rem', fontWeight: 600, border: 'none', cursor: 'pointer', transition: 'all 0.2s',
+              background: mode === 'human' ? 'var(--accent-blue)' : 'transparent',
+              color: mode === 'human' ? '#FFF' : 'var(--text-secondary)'
+            }}
+          >
+            <User size={16} /> Human Rep
+          </button>
+          <button 
+            onClick={() => setMode('ai')}
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', borderRadius: '4px', fontSize: '0.875rem', fontWeight: 600, border: 'none', cursor: 'pointer', transition: 'all 0.2s',
+              background: mode === 'ai' ? '#8b5cf6' : 'transparent',
+              color: mode === 'ai' ? '#FFF' : 'var(--text-secondary)'
+            }}
+          >
+            <Bot size={16} /> AI Agent
+          </button>
+        </div>
+      </div>
+
       <div 
         className="editor-container" 
         style={{ flex: 1, display: 'flex', position: 'relative' }}
@@ -90,18 +118,18 @@ export default function TranscriptEditor({ transcript, setTranscript, appState, 
       >
         <textarea 
           className={`editor-textarea ${appState === 'input' && transcript.length === 0 ? 'empty-state' : ''}`}
-          placeholder={isProcessingPdf ? "Reading PDF..." : "Paste your raw sales call transcript here (e.g. from Zoom, Gong, Fireflies, Otter)... Or drag and drop a .txt/.csv/.pdf file."}
+          placeholder={isProcessingPdf ? "Reading PDF..." : (mode === 'human' ? "Paste your human rep's sales call transcript here..." : "Paste the failed transcript from your AI Voice Agent here...")}
           value={transcript}
           onChange={(e) => setTranscript(e.target.value)}
           disabled={appState !== 'input' || isProcessingPdf}
-          style={{ opacity: appState !== 'input' ? 0.7 : 1, zIndex: 1 }}
+          style={{ opacity: appState !== 'input' ? 0.7 : 1, zIndex: 1, margin: '16px 24px 24px', width: 'calc(100% - 48px)' }}
         />
         
         {/* Drag overlay */}
         {isDragging && (
           <div style={{
             position: 'absolute',
-            top: 24, left: 24, right: 24, bottom: 24,
+            top: 16, left: 24, right: 24, bottom: 24,
             background: 'rgba(59, 130, 246, 0.1)',
             border: '2px dashed var(--accent-blue)',
             zIndex: 10,
@@ -126,7 +154,7 @@ export default function TranscriptEditor({ transcript, setTranscript, appState, 
                <span style={{ color: 'rgba(255,255,255,0.1)' }}>|</span>
                <button 
                  onClick={() => fileInputRef.current?.click()} 
-                 style={{ color: 'var(--accent-blue)', fontSize: '0.875rem', fontWeight: 600, textDecoration: 'underline' }}
+                 style={{ color: 'var(--accent-blue)', fontSize: '0.875rem', fontWeight: 600, textDecoration: 'underline', border: 'none', background: 'none', cursor: 'pointer' }}
                  disabled={isProcessingPdf}
                >
                  {isProcessingPdf ? 'Parsing...' : 'Upload File'}
@@ -144,14 +172,18 @@ export default function TranscriptEditor({ transcript, setTranscript, appState, 
         {appState === 'input' && (
           <button 
             className="btn-primary" 
-            style={{ padding: '8px 24px', fontSize: '0.875rem' }}
-            onClick={onAnalyze}
+            style={{ 
+              padding: '8px 24px', 
+              fontSize: '0.875rem',
+              background: mode === 'ai' ? '#8b5cf6' : 'var(--accent-blue)' 
+            }}
+            onClick={() => onAnalyze(mode)}
             disabled={transcript.length < 10 || isProcessingPdf}
           >
-            Analyze Call <Sparkles size={14} style={{ marginLeft: '6px' }} />
+            {mode === 'human' ? 'Analyze Call' : 'Optimize Agent Prompt'} <Sparkles size={14} style={{ marginLeft: '6px' }} />
           </button>
         )}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,24 +1,24 @@
-import { FileText, CreditCard, PenTool, ArrowRight } from 'lucide-react';
+import { FileText, PenTool, ArrowRight, Bot } from 'lucide-react';
 
 export default function HowItWorks() {
   const steps = [
     {
       num: "01",
       icon: <FileText size={28} />,
-      title: "Paste",
-      desc: "Drop in a single call transcript or upload a batch of past calls."
+      title: "Upload",
+      desc: "Drop in failed call transcripts from your human reps or AI Voice Agents."
     },
     {
       num: "02",
-      icon: <CreditCard size={28} />,
-      title: "Pay",
-      desc: "Choose the $9 one-time or $49/mo unlimited plan. Zero friction."
+      icon: <Bot size={28} />,
+      title: "Analyze",
+      desc: "Our engine isolates logic loops, missed buying signals, and weak objection handling."
     },
     {
       num: "03",
       icon: <PenTool size={28} />,
       title: "Fix",
-      desc: "Get an instant AI teardown and a word-for-word script to use on your next call."
+      desc: "Get an optimized System Prompt for your AI, or a word-for-word recovery script for your rep."
     }
   ];
 

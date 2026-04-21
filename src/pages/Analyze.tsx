@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { UserButton } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 import TranscriptEditor from '../components/analyze/TranscriptEditor';
 import IntelligencePanel from '../components/analyze/IntelligencePanel';
 import AnalysisReport from '../components/analyze/AnalysisReport';
@@ -30,6 +31,19 @@ export default function Analyze() {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [activeThoughts, setActiveThoughts] = useState<string[]>([]);
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
+  const [summaryState, setSummaryState] = useState<'hidden' | 'generating' | 'visible'>('hidden');
+
+  useEffect(() => {
+    if (appState === 'results') {
+      setSummaryState('generating');
+      const timer = setTimeout(() => {
+        setSummaryState('visible');
+      }, 2500); // Wait 2.5 seconds before revealing the summary
+      return () => clearTimeout(timer);
+    } else {
+      setSummaryState('hidden');
+    }
+  }, [appState]);
 
   useEffect(() => {
     localStorage.setItem('verbatify_transcript', transcript);
@@ -49,9 +63,10 @@ export default function Analyze() {
     return () => timeouts.forEach(clearTimeout);
   }, [appState]);
 
-  const handleAnalyzeClick = () => {
+  const handleAnalyzeClick = (_mode: 'human' | 'ai') => {
     if (transcript.length > 10) {
       setAppState('paywall');
+      // we could also save the mode here to state if needed later
     }
   };
 
@@ -101,8 +116,11 @@ export default function Analyze() {
         
         {/* Left Pane: The Editor/Transcript View */}
         <div className="workspace-left">
-          <div className="workspace-header">
-            <h1 className="app-title" style={{ fontSize: '1.25rem', marginBottom: 0 }}>
+          <div className="workspace-header" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.875rem', fontWeight: 600, padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px' }}>
+              &larr; Dashboard
+            </Link>
+            <h1 className="app-title" style={{ fontSize: '1.25rem', marginBottom: 0, marginLeft: 'auto' }}>
               {(appState === 'analyzing' || appState === 'results') ? 'AI Processing Log' : 'New Analysis'}
             </h1>
           </div>
@@ -125,10 +143,30 @@ export default function Analyze() {
                     </span>
                   </div>
                 ))}
+                
                 {appState === 'analyzing' && activeThoughts.length < AI_THOUGHTS.length && (
                   <div className="pulse" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '4px' }}>
                     <span style={{ color: 'var(--accent-blue)' }}>&gt;</span>
                     <span style={{ width: '8px', height: '16px', background: 'var(--accent-blue)', display: 'inline-block', animation: 'blink 1s step-end infinite' }}></span>
+                  </div>
+                )}
+
+                {summaryState === 'generating' && (
+                  <div className="fade-in pulse" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '16px' }}>
+                    <span style={{ color: 'var(--accent-blue)' }}>&gt;</span>
+                    <span style={{ color: 'var(--text-primary)' }}>Synthesizing executive summary...</span>
+                    <span style={{ width: '8px', height: '16px', background: 'var(--accent-blue)', display: 'inline-block', animation: 'blink 1s step-end infinite' }}></span>
+                  </div>
+                )}
+
+                {summaryState === 'visible' && analysisResult && (
+                  <div className="fade-in" style={{ marginTop: '24px', padding: '24px', border: '1px solid rgba(59, 130, 246, 0.3)', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '4px', fontFamily: 'var(--font-sans)' }}>
+                    <h3 style={{ color: 'var(--text-primary)', fontSize: '1.125rem', fontWeight: 800, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Sparkles size={16} color="var(--accent-blue)" /> Executive Summary
+                    </h3>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                      {analysisResult.executiveSummary}
+                    </p>
                   </div>
                 )}
               </div>

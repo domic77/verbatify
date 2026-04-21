@@ -5,8 +5,6 @@ import { Sparkles, ArrowRight, CheckCircle2, Activity } from 'lucide-react';
 
 export default function Signup() {
   const { isLoaded, signUp, setActive } = useSignUp();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [pendingVerification, setPendingVerification] = useState(false);
@@ -23,8 +21,6 @@ export default function Signup() {
     
     try {
       await signUp.create({
-        firstName,
-        lastName,
         emailAddress,
         password,
       });
@@ -65,7 +61,7 @@ export default function Signup() {
     <div className="auth-split">
       <div className="auth-left">
         <div style={{ maxWidth: '480px', margin: '0 auto' }}>
-          <h2 className="auth-quote" style={{ marginBottom: '40px' }}>Turn lost deals into your best training material.</h2>
+          <h2 className="auth-quote" style={{ marginBottom: '40px' }}>Debug your AI Agents.<br/>Coach your Human Reps.</h2>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
@@ -73,8 +69,8 @@ export default function Signup() {
                 <CheckCircle2 size={24} />
               </div>
               <div>
-                <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, marginBottom: '4px', fontSize: '1.125rem' }}>Identify Blind Spots</h4>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>Instantly catch the exact objections and buying signals your team is missing on every call.</p>
+                <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, marginBottom: '4px', fontSize: '1.125rem' }}>Isolate Fatal Flaws</h4>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>Instantly catch the exact objections your human reps miss and the logic loops where your AI agents get stuck.</p>
               </div>
             </div>
 
@@ -83,8 +79,8 @@ export default function Signup() {
                 <Sparkles size={24} />
               </div>
               <div>
-                <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, marginBottom: '4px', fontSize: '1.125rem' }}>Generate Winning Scripts</h4>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>Get word-for-word, AI-generated rebuttals tailored to the exact moment you lost the deal.</p>
+                <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, marginBottom: '4px', fontSize: '1.125rem' }}>Optimize Playbooks & Prompts</h4>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>Get word-for-word human recovery scripts and optimized System Prompts generated directly from your failed calls.</p>
               </div>
             </div>
 
@@ -94,7 +90,7 @@ export default function Signup() {
               </div>
               <div>
                 <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, marginBottom: '4px', fontSize: '1.125rem' }}>Recover Missed Revenue</h4>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>Scale your win rate by turning one lost deal into a playbook for closing the next ten.</p>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>Scale your win rate by turning batches of lost deals into a master playbook to close the next hundred.</p>
               </div>
             </div>
           </div>
@@ -105,15 +101,15 @@ export default function Signup() {
         <div className="auth-spotlight"></div>
         <div className="auth-card">
           
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '32px' }}>
-            <Link to="/" style={{ marginBottom: '16px', display: 'inline-block' }}>
-              <img src="/main-logo-2.png" alt="Verbatify Logo" height="40" style={{ display: 'block', filter: 'invert(1) brightness(2)' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '16px' }}>
+            <Link to="/" style={{ marginBottom: '12px', display: 'inline-block' }}>
+              <img src="/main-logo-2.png" alt="Verbatify Logo" height="28" style={{ display: 'block', filter: 'invert(1) brightness(2)' }} />
             </Link>
-            <h1 className="auth-title text-gradient" style={{ fontSize: '2rem', marginBottom: 0 }}>
+            <h1 className="auth-title text-gradient" style={{ fontSize: '1.5rem', marginBottom: 0 }}>
               {pendingVerification ? 'Check your email' : 'Start closing.'}
             </h1>
             {pendingVerification && (
-              <p className="auth-subtitle" style={{ marginTop: '8px' }}>
+              <p className="auth-subtitle" style={{ marginTop: '8px', fontSize: '0.875rem' }}>
                 We sent a verification code to {emailAddress}
               </p>
             )}
@@ -125,31 +121,20 @@ export default function Signup() {
 
             {!pendingVerification ? (
               <form className="auth-form" onSubmit={handleSignUp}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="firstName">First Name</label>
-                    <input 
-                      id="firstName"
-                      type="text" 
-                      className="form-input" 
-                      placeholder="Jane" 
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="lastName">Last Name</label>
-                    <input 
-                      id="lastName"
-                      type="text" 
-                      className="form-input" 
-                      placeholder="Doe" 
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                      required
-                    />
-                  </div>
+                <button 
+                  type="button" 
+                  className="btn-secondary" 
+                  style={{ width: '100%', justifyContent: 'center', marginBottom: '12px', background: 'rgba(255,255,255,0.05)' }}
+                  onClick={() => signUp?.authenticateWithRedirect({ strategy: 'oauth_google', redirectUrl: '/sso-callback', redirectUrlComplete: '/dashboard' })}
+                >
+                  <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" style={{ width: '18px', height: '18px', marginRight: '8px' }} />
+                  Continue with Google
+                </button>
+
+                <div style={{ display: 'flex', alignItems: 'center', margin: '16px 0', color: 'var(--text-secondary)' }}>
+                  <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }}></div>
+                  <span style={{ padding: '0 12px', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Or email</span>
+                  <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }}></div>
                 </div>
 
                 <div className="form-group">
@@ -182,8 +167,9 @@ export default function Signup() {
 
                 <button 
                   type="submit" 
-                  className="btn-primary"                   style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
-                  disabled={isLoading || !emailAddress || !password || !firstName || !lastName}
+                  className="btn-primary" 
+                  style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
+                  disabled={isLoading || !emailAddress || !password}
                 >
                   {isLoading ? 'Creating Account...' : 'Create account'}
                   {isLoading ? <Sparkles size={16} className="animate-spin" /> : <ArrowRight size={16} />}
@@ -209,7 +195,8 @@ export default function Signup() {
 
                 <button 
                   type="submit" 
-                  className="btn-primary"                   style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
+                  className="btn-primary" 
+                  style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
                   disabled={isLoading || !code}
                 >
                   {isLoading ? 'Verifying...' : 'Verify Email'}
