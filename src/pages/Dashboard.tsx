@@ -4,7 +4,7 @@ import { AlertTriangle, BookOpen, Plus, TrendingUp, History, FileText, ChevronRi
 
 export default function Dashboard() {
   return (
-    <div className="scanline-bg" style={{ minHeight: 'calc(100vh - 61px)', background: 'var(--bg-navy)' }}>
+    <div className="dashboard-bg">
       {/* Distraction-Free App Navbar */}
       <nav className="navbar" style={{ padding: '12px 24px', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(10,15,30,0.95)', backdropFilter: 'blur(20px)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1600px', margin: '0 auto' }}>
@@ -30,7 +30,7 @@ export default function Dashboard() {
               Pattern analysis and active playbooks.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '16px' }}>
+          <div className="dashboard-header-stats">
             <div style={{ background: 'rgba(15, 24, 41, 0.6)', border: '1px solid rgba(255,255,255,0.05)', padding: '16px 32px', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)', marginBottom: '4px' }}>
                 Calls Analyzed
@@ -51,7 +51,7 @@ export default function Dashboard() {
         </div>
 
         {/* Dashboard Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+        <div className="dashboard-grid">
           
           {/* Top Flaws */}
           <div style={{ border: '1px solid rgba(255,255,255,0.05)', background: 'rgba(15, 24, 41, 0.6)', padding: '32px', borderRadius: '8px' }}>
@@ -125,7 +125,7 @@ export default function Dashboard() {
           <div style={{ border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', overflow: 'hidden' }}>
             
             {/* Table Header */}
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr auto', padding: '16px 24px', background: 'rgba(15, 24, 41, 0.8)', borderBottom: '1px solid rgba(255,255,255,0.05)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div className="history-table-header">
               <div>Transcript Name</div>
               <div>Date</div>
               <div>Status</div>
@@ -133,7 +133,7 @@ export default function Dashboard() {
             </div>
 
             {/* List Items */}
-            <Link to="/analyze" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr auto', padding: '20px 24px', background: 'rgba(15, 24, 41, 0.4)', borderBottom: '1px solid rgba(255,255,255,0.05)', alignItems: 'center', textDecoration: 'none', transition: 'background 0.2s' }} className="history-row">
+            <Link to="/analyze" className="history-row">
               <div style={{ color: 'var(--text-primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{ background: 'rgba(59, 130, 246, 0.1)', padding: '8px', borderRadius: '4px', color: 'var(--accent-blue)' }}><FileText size={16} /></div>
                 Discovery_Call_AcmeCorp.txt
@@ -143,7 +143,7 @@ export default function Dashboard() {
               <div style={{ color: 'var(--text-secondary)' }}><ChevronRight size={20} /></div>
             </Link>
 
-            <Link to="/analyze" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr auto', padding: '20px 24px', background: 'rgba(15, 24, 41, 0.4)', borderBottom: '1px solid rgba(255,255,255,0.05)', alignItems: 'center', textDecoration: 'none', transition: 'background 0.2s' }} className="history-row">
+            <Link to="/analyze" className="history-row">
               <div style={{ color: 'var(--text-primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{ background: 'rgba(59, 130, 246, 0.1)', padding: '8px', borderRadius: '4px', color: 'var(--accent-blue)' }}><FileText size={16} /></div>
                 Demo_TechNova_Q3.pdf
@@ -153,7 +153,7 @@ export default function Dashboard() {
               <div style={{ color: 'var(--text-secondary)' }}><ChevronRight size={20} /></div>
             </Link>
 
-            <Link to="/analyze" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr auto', padding: '20px 24px', background: 'rgba(15, 24, 41, 0.4)', alignItems: 'center', textDecoration: 'none', transition: 'background 0.2s' }} className="history-row">
+            <Link to="/analyze" className="history-row">
               <div style={{ color: 'var(--text-primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{ background: 'rgba(59, 130, 246, 0.1)', padding: '8px', borderRadius: '4px', color: 'var(--accent-blue)' }}><FileText size={16} /></div>
                 FollowUp_Zenith_V2.txt
